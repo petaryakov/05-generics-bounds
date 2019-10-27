@@ -45,6 +45,7 @@ public interface SimpleList<T> extends Iterable<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	default SimpleList<T> filter(SimpleFilter<T> filter) {
+		//SimpleList<T> result = new SimpleListImpl<>();
 		SimpleList<T> result;
 		try {
 			result = (SimpleList<T>) getClass().newInstance();
@@ -66,7 +67,9 @@ public interface SimpleList<T> extends Iterable<T> {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	default <R> SimpleList<R> map(Function<T, R> transform) {
+	//default <R> SimpleList<R> map(Function<T, R> transform) {
+	default <R> SimpleList<R> map(Function<? super T, ? extends R> transform){		// how do i understand from the assingment
+																					// that i should use super for T and extends for R
 		SimpleList<R> result;
 		try {
 			result = (SimpleList<R>) getClass().newInstance();

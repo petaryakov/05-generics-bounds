@@ -3,6 +3,8 @@ package ohm.softa.a05.tests.collections;
 import ohm.softa.a05.collections.SimpleFilter;
 import ohm.softa.a05.collections.SimpleList;
 import ohm.softa.a05.collections.SimpleListImpl;
+import ohm.softa.a05.model.Flower;
+import ohm.softa.a05.model.PlantColor;
 import ohm.softa.a05.tests.models.Person;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,8 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Peter Kurfer
@@ -24,7 +25,7 @@ class SimpleListTests {
 	private SimpleList<Integer> testList;
 
 	@BeforeEach
-	void setup(){
+	void setup() {
 		testList = new SimpleListImpl<>();
 
 		testList.add(1);
@@ -35,23 +36,23 @@ class SimpleListTests {
 	}
 
 	@Test
-	void testAddElements(){
+	void testAddElements() {
 		logger.info("Testing if adding and iterating elements is implemented correctly");
 		int counter = 0;
-		for(Object o : testList){
+		for (Object o : testList) {
 			counter++;
 		}
 		assertEquals(5, counter);
 	}
 
 	@Test
-	void testSize(){
+	void testSize() {
 		logger.info("Testing if size() method is implemented correctly");
 		assertEquals(5, testList.size());
 	}
 
 	@Test
-	void testFilterAnonymousClass(){
+	void testFilterAnonymousClass() {
 		logger.info("Testing the filter possibilities by filtering for all elements greater 2");
 		SimpleList<Integer> result = testList.filter(new SimpleFilter<Integer>() {
 			@Override
@@ -60,16 +61,16 @@ class SimpleListTests {
 			}
 		});
 
-		for(Integer i : result){
+		for (Integer i : result) {
 			assertTrue(i > 2);
 		}
 	}
 
 	@Test
-	void testFilterLambda(){
+	void testFilterLambda() {
 		logger.info("Testing the filter possibilities by filtering for all elements which are dividable by 2");
 		SimpleList<Integer> result = testList.filter(o -> o % 2 == 0);
-		for(Integer i : result){
+		for (Integer i : result) {
 			assertTrue(i % 2 == 0);
 		}
 	}
@@ -83,11 +84,11 @@ class SimpleListTests {
 	}
 
 	@Test
-	void testSimpleListMap(){
+	void testSimpleListMap() {
 		logger.info("Testing default map method");
 		SimpleList<Integer> mapped = testList.map(i -> i + 1);
 		assertEquals(5, mapped.size());
-		for(Integer i : mapped) {
+		for (Integer i : mapped) {
 			assertTrue(i > 1);
 			assertTrue(i < 7);
 		}
@@ -110,4 +111,5 @@ class SimpleListTests {
 		SimpleList<Character> mapped = testList.map(i -> ((char) (i + 64)));
 		assertEquals(5, mapped.size());
 	}
+
 }
