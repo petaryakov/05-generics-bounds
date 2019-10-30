@@ -43,11 +43,22 @@ public class PlantUtilityTests {
         }
     }
 
+
     @Test
     void testSplitByBedByColorPureness2() {
-        Map<PlantColor, SimpleList<Plant>> split = PlantBedUtility.splitBedByColor2(flowerBed);
-        for (Plant f : split.get(PlantColor.YELLOW)) {
+        Map<PlantColor, SimpleList<Flower>> split = PlantBedUtility.splitBedByColor2(flowerBed);
+        for (Flower f : split.get(PlantColor.YELLOW)) {
             assertEquals(PlantColor.YELLOW, f.getColor());
         }
     }
+
+    @Test
+    void testSplitByBedByColorPureness3() {
+        Map<PlantColor, SimpleList<? extends Flower>> split = PlantBedUtility.splitBedByColor3(flowerBed);
+        for (Flower f : split.get(PlantColor.YELLOW)) {
+            assertEquals(PlantColor.YELLOW, f.getColor());
+        }
+    }
+
+
 }

@@ -33,8 +33,19 @@ public abstract class PlantBedUtility {    // private constr verbietet die Verer
 
     // shorter variant
     // why do we use wildcards here?
+    public static <T extends Plant> Map<PlantColor, SimpleList<T>>
+    splitBedByColor2(PlantBed<T> plantBed) {
+        Map<PlantColor, SimpleList<T>> result = new HashMap<>();
+        /* iterate the enum values */
+        for (PlantColor color : PlantColor.values()) {
+            /* get all plants of the current color */
+            result.put(color, plantBed.getPlantsByColor(color));
+        }
+        return result;
+    }
+
     public static <T extends Plant> Map<PlantColor, SimpleList<? extends T>>
-    splitBedByColor2(PlantBed<? extends T> plantBed) {
+    splitBedByColor3(PlantBed<? extends T> plantBed) {
         Map<PlantColor, SimpleList<? extends T>> result = new HashMap<>();
         /* iterate the enum values */
         for (PlantColor color : PlantColor.values()) {

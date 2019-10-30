@@ -26,11 +26,6 @@ public class FlowerTests {
     @Test
     void testCreateFlowerWithEmptyFamily() {
         assertThrows(IllegalArgumentException.class, () -> new Flower( 0.5, null, "Abracadabra", PlantColor.RED));
-       /* try{
-            Flower f = new Flower( 0.5, null, "Abracadabra", PlantColor.RED);
-        }catch (IllegalArgumentException e){
-
-        }*/
     }
 
     @Test
