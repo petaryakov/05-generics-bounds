@@ -1,8 +1,13 @@
 package ohm.softa.a05.model;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+
+// wenn wir implements Comparable<Plant> kriegen wir keine Fehlermeldung, weil die klasse abstract ist
+// und wir können die methoden der Interface auch in den Subklassen implementieren
 
 abstract public class Plant implements Comparable<Plant> {
 
@@ -12,7 +17,11 @@ abstract public class Plant implements Comparable<Plant> {
 
     protected Plant(double height, String family, String name) {
         if(family == null || family.length() == 0) throw new IllegalArgumentException("Specify a family");
+        //if(StringUtils.isBlank(family)) throw new IllegalArgumentException("Specify a family");   // andere variante
+
         if(name == null || name.length() == 0) throw new IllegalArgumentException("Specify a name");
+        //if(StringUtils.isBlank(name)) throw new IllegalArgumentException("Specify a name");   // andere variante
+
         if(height <= 0.0) throw new IllegalArgumentException("Height may not be less or equal zero");
         this.height = height;
         this.family = family;

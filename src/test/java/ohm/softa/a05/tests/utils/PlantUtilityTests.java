@@ -2,6 +2,7 @@ package ohm.softa.a05.tests.utils;
 
 import ohm.softa.a05.collections.SimpleList;
 import ohm.softa.a05.model.Flower;
+import ohm.softa.a05.model.Plant;
 import ohm.softa.a05.model.PlantBed;
 import ohm.softa.a05.model.PlantColor;
 import ohm.softa.a05.utils.PlantBedUtility;
@@ -44,8 +45,8 @@ public class PlantUtilityTests {
 
     @Test
     void testSplitByBedByColorPureness2() {
-        Map<PlantColor, SimpleList<? extends Flower>> split = PlantBedUtility.splitBedByColor2(flowerBed);
-        for (Flower f : split.get(PlantColor.YELLOW)) {
+        Map<PlantColor, SimpleList<Plant>> split = PlantBedUtility.splitBedByColor2(flowerBed);
+        for (Plant f : split.get(PlantColor.YELLOW)) {
             assertEquals(PlantColor.YELLOW, f.getColor());
         }
     }

@@ -68,8 +68,13 @@ public interface SimpleList<T> extends Iterable<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	//default <R> SimpleList<R> map(Function<T, R> transform) {
-	default <R> SimpleList<R> map(Function<? super T, ? extends R> transform){		// how do i understand from the assingment
-																					// that i should use super for T and extends for R
+
+    // QUESITON: how do i understand from the assingment
+    // that i should use super for T and extends for R
+
+    // ANSWER: was ich als parameter übergebe soll super sein( das Objekt wird consumiert)
+    // der Return-typ ist extends(ein Objekt wird produziert)
+	default <R> SimpleList<R> map(Function<? super T, ? extends R> transform){
 		SimpleList<R> result;
 		try {
 			result = (SimpleList<R>) getClass().newInstance();

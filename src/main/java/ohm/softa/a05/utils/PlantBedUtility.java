@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public abstract class PlantBedUtility {     // why is it abstract and const should be private
+public abstract class PlantBedUtility {    // private constr verbietet die Vererbung
 
     private PlantBedUtility(){ }
 
